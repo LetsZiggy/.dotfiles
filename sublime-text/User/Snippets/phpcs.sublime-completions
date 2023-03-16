@@ -1,0 +1,26 @@
+{
+	"scope": "text.xml, meta.tag.xml, punctuation.definition.tag.begin.xml",
+	"completions": [
+		{
+			"trigger": "phpcsRule",
+			"contents": "<rule ref=\"$1\">\n\t<properties>\n\t\t<property name=\"$2\" value=\"$3\" />\n\t</properties>\n</rule>$0",
+			"annotation": "phpcs rule",
+			"kind": "snippet",
+			"details": "PHP CodeSniffer rule tag",
+		},
+		{
+			"trigger": "phpcsProperty",
+			"contents": "<property name=\"$1\" value=\"$2\" />$0",
+			"annotation": "phpcs property",
+			"kind": "snippet",
+			"details": "PHP CodeSniffer property tag",
+		},
+		{
+			"trigger": "phpcsExclude",
+			"contents": "<exclude name=\"$1\" />$0",
+			"annotation": "phpcs exclude",
+			"kind": "snippet",
+			"details": "PHP CodeSniffer exclude tag",
+		},
+	],
+}

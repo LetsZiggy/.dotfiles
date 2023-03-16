@@ -1,0 +1,19 @@
+[
+	// Overwrite default key bindings (Default has property error)
+	{ "keys": ["ctrl+space"], "command": "auto_complete", "args": { "commit_single": false } },
+
+	// Overwrite default key bindings
+	{ "keys": ["primary+tab"], "command": "next_view" },
+	// Overwrite default key bindings
+	{ "keys": ["primary+shift+tab"], "command": "prev_view" },
+	// Overwrite default key bindings
+	{ "keys": ["primary+\\", "primary+\\"], "command": "toggle_minimap" },
+	// Overwrite default LSP key bindings
+	{ "keys": ["primary+alt+n"], "command": "lsp_symbol_rename", "context": [{ "key": "lsp.session_with_capability", "operator": "equal", "operand": "renameProvider" }] },
+	// Overwrite default LSP key bindings
+	{ "keys": ["primary+alt+c"], "command": "lsp_code_actions", "context": [{ "key": "lsp.session_with_capability", "operand": "codeActionProvider" }] },
+	// Overwrite default LSP key bindings
+	{ "keys": ["f8"], "command": "lsp_goto_diagnostic", "args": {"uri": "$view_uri"} },
+	// Overwrite default LSP key bindings
+	{ "keys": ["shift+f8"], "command": "lsp_goto_diagnostic" },
+]

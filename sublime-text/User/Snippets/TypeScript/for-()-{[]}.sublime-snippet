@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[for (var ${2:i} = 0; ${2:i} < ${1:Things}.length; ${2:i}++) {
+	${3:${1:Things}[${2:i}]}$0
+}]]></content>
+	<tabTrigger>fori</tabTrigger>
+	<scope>source.ts, source.tsx</scope>
+	<description>for (…) {…}</description>
+</snippet>

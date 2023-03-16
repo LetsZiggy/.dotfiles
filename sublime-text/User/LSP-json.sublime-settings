@@ -1,0 +1,21 @@
+{
+	"initializationOptions": {
+		"provideFormatter": false,
+	},
+	"settings": {
+		"json.format.enable": false,
+		"jsonc.patterns": [
+			"buffer://*",
+			".babelrc",
+			".eslintrc",
+			".hintrc",
+			".jsfmtrc",
+			".jshintrc",
+			".json",
+			".jsonc",
+			".stylelintrc",
+			".swcrc",
+			"/.ember-cli",
+		],
+	},
+}

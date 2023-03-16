@@ -1,0 +1,31 @@
+{
+	"variables": {
+	},
+	"globals": {
+		"invisibles": "#A855F799", // tabs and spaces ("draw_white_space": ["all"])
+	},
+	"rules": [
+		{
+			"name": "Comment",
+			"scope": "comment",
+			"foreground": "#899FD7",
+		},
+		{
+			"name": "Invalid deprecated",
+			"scope": "source invalid.deprecated variable.language",
+			"foreground": "#F8F8F0",
+			"background": "#BD93F9",
+		},
+		{
+			"name": "Meta Path",
+			"scope": "meta.path",
+			"foreground": "#66D9EF",
+			"font_style": "", // underline
+		},
+		{
+			"name": "Meta Generic Name Python",
+			"scope": "meta.generic-name.python",
+			"foreground": "#EEEEEE",
+		},
+	],
+}

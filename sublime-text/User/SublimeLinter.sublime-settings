@@ -1,0 +1,35 @@
+{
+	"debug": false,
+	"linters": {
+		"htmlhint": {
+			"disable": true,
+			"lint_mode": "background",
+			// "args": ["--config", ".htmlhintrc"],
+		},
+		"eslint": {
+			"disable": true,
+			// "executable": ["pnpm", "dlx", "eslint"], // ["npx", "eslint"]
+			// "lint_mode": "load_save",
+			"executable": ["pnpm", "dlx", "eslint_d"], // ["npx", "eslint_d"]
+			"lint_mode": "background",
+			"disable_if_not_dependency": true,
+		},
+		"phpcs": {
+			"disable": true,
+		},
+		"phpmd": {
+			"disable": true,
+		},
+		// "phpstan": {
+		//	 "disable": true,
+		// },
+		"stylelint": {
+			"disable": true,
+			// "executable": ["pnpm", "dlx", "stylelint"], // ["npx", "stylelint"]
+			// "lint_mode": "load_save",
+			"executable": ["pnpm", "dlx", "stylelint_d"], // ["npx", "stylelint_d"]
+			"lint_mode": "background",
+			"disable_if_not_dependency": true,
+		},
+	},
+}

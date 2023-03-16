@@ -1,0 +1,40 @@
+{
+	"scope": "source.ts, source.js - meta.attribute-with-value",
+	"completions": [
+		{
+			"trigger": "import",
+			"contents": "import $3{ $2 } from \"$1\"$0",
+			"annotation": "Import statement",
+			"kind": "snippet",
+			"details": "ECMAScript import statement",
+		},
+		{
+			"trigger": "tsExpectError",
+			"contents": "// @ts-expect-error$0",
+			"annotation": "Disable linter",
+			"kind": "snippet",
+			"details": "TypeScript expect error next line",
+		},
+		{
+			"trigger": "eslintDisableFile",
+			"contents": "/* eslint-disable $1*/$0",
+			"annotation": "Disable linter",
+			"kind": "snippet",
+			"details": "ESLint disable files",
+		},
+		{
+			"trigger": "eslintDisableLine",
+			"contents": "// eslint-disable-line$0",
+			"annotation": "Disable linter",
+			"kind": "snippet",
+			"details": "ESLint disable line",
+		},
+		{
+			"trigger": "eslintDisableNextLine",
+			"contents": "// eslint-disable-next-line$0",
+			"annotation": "Disable linter",
+			"kind": "snippet",
+			"details": "ESLint disable next line",
+		},
+	],
+}

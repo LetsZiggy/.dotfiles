@@ -1,0 +1,10 @@
+{
+	"extensions":
+	[
+		".dockerignore",
+		".eslintignore",
+		".gitignore",
+		".prettierignore",
+		".stylelintignore",
+	],
+}

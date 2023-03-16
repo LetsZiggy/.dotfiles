@@ -1,0 +1,6 @@
+{
+	"enabled": false,
+	"settings": {
+		"packageManager": "pnpm",
+	},
+}

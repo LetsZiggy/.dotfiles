@@ -1,0 +1,9 @@
+{
+	"text.html.aurelia.v1": "html",
+	"source.js.aurelia.v1": "javascript",
+	"source.ts.aurelia.v1": "typescript",
+	"text.html.aurelia.v2": "html",
+	"source.js.aurelia.v2": "javascript",
+	"source.ts.aurelia.v2": "typescript",
+	"text.html.edge": "html",
+}
