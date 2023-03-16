@@ -10,7 +10,7 @@ local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
---[[ local on_attach = function(_, bufnr)
+--[[ local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -71,7 +71,7 @@ local handlers = {
             version = "LuaJIT",
           },
           diagnostics = {
-            globals = {"vim"},
+            globals = { "vim" },
           },
           workspace = {
             library = vim.api.nvim_get_runtime_file("", true),

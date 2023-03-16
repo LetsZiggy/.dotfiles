@@ -2,7 +2,6 @@
 -- [[ https://stackoverflow.com/a/16117216/7641789 ]]
 
 local map = vim.keymap.set
-local api = vim.api
 local g = vim.g
 
 -- <Leader>
@@ -22,7 +21,7 @@ map("n", "<leader>//", "<CMD>noh<CR>", {desc = "Hide search highlights (:noh)"})
 -- LSP [[ https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L255 ]]
 
 
--- nvim-treesitter | https://github.com/nvim-treesitter/nvim-treesitter
+-- ./lua/neovim/plugins/nvim-treesitter.lua | https://github.com/nvim-treesitter/nvim-treesitter
 --[[
 -- nvim-treesitter
 init_selection = "gs",
@@ -31,7 +30,7 @@ node_decremental = "gS",
 scope_incremental = "<leader>gc",
 --]]
 
--- nvim-treesitter-textobjects | https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+-- ./lua/neovim/plugins/nvim-treesitter.lua | https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 --[[
 ["af"] = "@function.outer",
 ["if"] = "@function.inner",
@@ -44,7 +43,7 @@ scope_incremental = "<leader>gc",
 ["uc"] = "@comment.outer",
 --]]
 
--- nvim-treesitter-refactor | https://github.com/nvim-treesitter/nvim-treesitter-refactor
+-- ./lua/neovim/plugins/nvim-treesitter.lua | https://github.com/nvim-treesitter/nvim-treesitter-refactor
 --[[
 smart_rename = "grr",
 goto_definition = "gnd",
@@ -54,40 +53,49 @@ goto_next_usage = "<a-*>",
 goto_previous_usage = "<a-#>",
 --]]
 
--- gitsigns | https://github.com/lewis6991/gitsigns.nvim
+-- ./lua/neovim/plugins/gitsigns.lua | https://github.com/lewis6991/gitsigns.nvim
 --[[
-map("n", "]c", "&diff ? ']c' : '<CMD>Gitsigns next_hunk<CR>'", opts)
-map("n", "[c", "&diff ? '[c' : '<CMD>Gitsigns prev_hunk<CR>'", opts)
+-- Navigation
+map("n", "]c", function()
+  if vim.wo.diff then return "]c" end
+  vim.schedule(function() gs.next_hunk() end)
+
+  return "<Ignore>"
+end, {expr=true})
+
+map("n", "[c", function()
+  if vim.wo.diff then return "[c" end
+  vim.schedule(function() gs.prev_hunk() end)
+
+  return "<Ignore>"
+end, {expr=true})
+
+-- Actions
 map({"n", "v"}, "<leader>hr", gs.reset_hunk, {buffer = buf})
 map({"n", "v"}, "<leader>hs", gs.stage_hunk)
 map("n", "<leader>hS", gs.stage_buffer, {buffer = buf})
 map("n", "<leader>hp", gs.preview_hunk, {buffer = buf})
-map({"o", "x"}, "ih", "<CMD><C-u>Gitsigns select_hunk<CR>", {buffer = buf})
+
+-- Text object
+map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>", {buffer = buf})
 --]]
 
--- git-messenger | https://github.com/rhysd/git-messenger.vim
+-- ./lua/neovim/plugins/git-messenger.lua | https://github.com/rhysd/git-messenger.vim
 map("n", "gm", "<CMD>GitMessenger<CR>", {desc = "Show line's git history"})
 
--- nvim-tree | https://github.com/nvim-tree/nvim-tree.lua
+-- ./lua/neovim/plugins/nvim-tree.lua | https://github.com/nvim-tree/nvim-tree.lua
 map("n", "<C-n>", "<CMD>NvimTreeFocus<CR>", {desc = "Open (if closed) and focus in nvim-tree"})
-api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("NVIM_TREE", {clear = true}),
-  pattern = "NvimTree",
-  callback = function()
-    vim.api.nvim_win_set_option(0, "wrap", false)
-  end,
-})
 
--- telescope | https://github.com/nvim-telescope/telescope.nvim
+-- ./lua/neovim/plugins/telescope.lua | https://github.com/nvim-telescope/telescope.nvim
 map("n", "<leader>ff", "<CMD>Telescope find_files hidden=true<CR>", {desc = "Open telescope find_file"})
 map("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", {desc = "Open telescope live_grep"})
 map("n", "<leader>fb", "<CMD>Telescope buffers<CR>", {desc = "Open telescope buffers"})
 map("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", {desc = "Open telescope help_tags"})
 
--- telescope-file-browser | https://github.com/nvim-telescope/telescope-file-browser.nvim
+-- ./lua/neovim/plugins/telescope.lua | https://github.com/nvim-telescope/telescope-file-browser.nvim
 map("n", "<leader>fd", "<CMD>Telescope file_browser hidden=true<CR>", {desc = "Open telescope file_browser"})
 
--- nvim-cmp | https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+-- ./lua/neovim/plugins/nvim-cmp.lua | https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 --[[
 ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "c"}),
 ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), {"i", "c"}),
@@ -126,3 +134,5 @@ end, {"i", "s"}),
   end
 end, {"i", "s"}),
 --]]
+
+-- ./lua/neovim/plugins/mason-null-ls.lua | https://github.com/jose-elias-alvarez/null-ls.nvim/wiki

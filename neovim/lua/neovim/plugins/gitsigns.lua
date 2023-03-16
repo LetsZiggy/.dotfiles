@@ -3,28 +3,46 @@
 local map = vim.keymap.set
 
 local config = {
-    signs = {
-      add = {text = "+"},
-      change = {text = "~"},
-      changedelete = {text = "="},
-    },
-    on_attach = function(buf)
-      local gs = package.loaded.gitsigns
-      local opts = {buffer = buf, expr = true, replace_keycodes = false}
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+    topdelete = { text = '‾' },
+    changedelete = { text = '~' },
+  },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
 
-      -- Navigation
-      map("n", "]c", "&diff ? ']c' : '<CMD>Gitsigns next_hunk<CR>'", opts)
-      map("n", "[c", "&diff ? '[c' : '<CMD>Gitsigns prev_hunk<CR>'", opts)
+    local function remap(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      map(mode, l, r, opts)
+    end
 
-      -- Actions
-      map({"n", "v"}, "<leader>hr", gs.reset_hunk, {buffer = buf})
-      map({"n", "v"}, "<leader>hs", gs.stage_hunk)
-      map("n", "<leader>hS", gs.stage_buffer, {buffer = buf})
-      map("n", "<leader>hp", gs.preview_hunk, {buffer = buf})
+    -- Navigation
+    remap("n", "]c", function()
+      if vim.wo.diff then return "]c" end
+      vim.schedule(function() gs.next_hunk() end)
 
-      -- Text object
-      map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>", {buffer = buf})
-    end,
+      return "<Ignore>"
+    end, {desc = "", expr=true})
+
+    remap("n", "[c", function()
+      if vim.wo.diff then return "[c" end
+      vim.schedule(function() gs.prev_hunk() end)
+
+      return "<Ignore>"
+    end, {desc = "", expr=true})
+
+    -- Actions
+    remap({"n", "v"}, "<leader>hr", gs.reset_hunk, {desc = "", buffer = bufnr})
+    remap({"n", "v"}, "<leader>hs", gs.stage_hunk, {desc = ""})
+    remap("n", "<leader>hS", gs.stage_buffer, {desc = "", buffer = bufnr})
+    remap("n", "<leader>hp", gs.preview_hunk, {desc = "", buffer = bufnr})
+
+    -- Text object
+    remap({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>", {desc = "", buffer = bufnr})
+  end,
 }
 
 require("gitsigns").setup(config)

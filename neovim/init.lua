@@ -17,6 +17,11 @@ require("neovim.settings")
 require("neovim.plugins")
 
 -- ----------------------- --
+-- -------Autocmd--------- --
+-- ----------------------- --
+require("neovim.autocmd")
+
+-- ----------------------- --
 -- -------Keymaps--------- --
 -- ----------------------- --
 require("neovim.keymaps")
