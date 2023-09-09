@@ -1,0 +1,32 @@
+{
+	/* General */
+	"font_face": "Fira Code",
+	"font_size": 10,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"expand_merge_commits_by_default": true,
+	"signature_error_highlighting": "no_public_key",
+
+	/* Layout */
+	"side_bar_layout": "commit_graph_as_column",
+	"render_commit_dialog_message_at_top": true,
+	"hide_menu": false,
+
+	/* Diffs */
+	"diff_style": "inline",
+	"image_diff_style": "onion-skin",
+	"auto_diff_style_min_chars": 80,
+	"ignore_diff_white_space": false,
+
+	/* Commit Messages */
+
+	/* Editor */
+
+	/* Advanced */
+	"hardware_acceleration": "opengl",
+	"time_format": "24h",
+	"trim_trailing_white_space_on_save": "all",
+	"always_show_command_status": false,
+	"diff_algorithm": "match_git",
+	"expand_untracked_files_by_default": false,
+}
